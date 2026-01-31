@@ -68,9 +68,9 @@ export const TextHoverEffect = ({
       >
         {text}
       </motion.span>
-      {/* Enhanced gradient on hover */}
+      {/* Enhanced blue gradient on hover */}
       <motion.span
-        className="absolute inset-0 bg-gradient-to-r from-ocean via-pearl to-ocean bg-clip-text text-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-ocean via-[#7BA5CC] to-ocean bg-clip-text text-transparent"
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}

@@ -61,11 +61,11 @@ export const personalInfo: PersonalInfo = {
 // ============================================
 
 export const navigation: NavigationItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '/', icon: '🏠' },
+  { label: 'Projects', href: '/projects', icon: '💼' },
+  { label: 'About', href: '/about', icon: '👤' },
+  { label: 'Blog', href: '/blog', icon: '📝' },
+  { label: 'Contact', href: '/contact', icon: '📧' },
 ];
 
 // ============================================
