@@ -57,10 +57,10 @@ export function Navbar() {
         >
           <nav
             className={cn(
-              'relative flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] border border-transparent',
+              'relative flex items-center justify-between transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] border',
               isScrolled
-                ? 'navbar-glass navbar-glass-scrolled rounded-full px-5 sm:px-8 py-3'
-                : 'px-0 py-1'
+                ? 'navbar-glass navbar-glass-scrolled rounded-full px-5 sm:px-8 py-3 border-ocean/10'
+                : 'px-0 py-1 border-transparent'
             )}
           >
 
