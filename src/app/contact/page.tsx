@@ -270,10 +270,10 @@ export default function ContactPage() {
 
                   <HoverBorderGradient
                     as="button"
-                    type="submit"
                     disabled={isSubmitting}
                     containerClassName="w-full"
                     className="w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    {...({ type: 'submit' } as any)}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center gap-2 justify-center">
