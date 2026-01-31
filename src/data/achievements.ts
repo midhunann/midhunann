@@ -13,7 +13,7 @@ export const achievements: Achievement[] = [
     description:
       'Secured 2nd place among approximately 100,000 teams in the Adobe India Hackathon 2025 with Synapse-Docs, a document intelligence platform.',
     link: 'https://www.linkedin.com/posts/midhunan-vijendra-prabhaharan_announcing-the-winners-of-the-adobe-india-activity-7371195492870979585-Odlz',
-    image: '/assets/images/achievements/adobe-hackathon-runner-up.png',
+    image: '/assets/images/achievements/adobe-hackathon-runner-up.jpeg',
     type: 'hackathon',
   },
   {
@@ -24,6 +24,7 @@ export const achievements: Achievement[] = [
     description:
       'Built AgriChain, a blockchain-based solution for agricultural supply chain transparency.',
     link: 'https://github.com/tokenomists/AgriChain',
+    image: '/assets/images/achievements/hack-beyond-limits.jpeg',
     type: 'hackathon',
   },
   {
@@ -34,6 +35,7 @@ export const achievements: Achievement[] = [
     description:
       'Developed Arogya Desk, a healthcare management solution.',
     link: 'https://www.linkedin.com/posts/midhunan-vijendra-prabhaharan_we-manc-proudly-secured-3rd-place-in-the-activity-7291080294781083648-2O6e',
+    image: '/assets/images/achievements/value-health-hackathon.jpeg',
     type: 'hackathon',
   },
   {
@@ -43,6 +45,7 @@ export const achievements: Achievement[] = [
     year: '2024 - Present',
     description:
       'Leading event management initiatives and developing web solutions for the ACM Student Chapter at Amrita Vishwa Vidyapeetham.',
+    image: '/assets/images/achievements/acm-team.JPG',
     type: 'position',
   },
 ];
