@@ -1,0 +1,441 @@
+@import "tailwindcss";
+
+/* ============================================
+   FONT FACES - Monaspace
+   ============================================ */
+
+@font-face {
+  font-family: 'Monaspace Neon';
+  src: url('/fonts/Monaspace Neon Var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Monaspace Krypton';
+  src: url('/fonts/Monaspace Krypton Var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   CSS VARIABLES - Midnight Theme
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --noir: #000000;
+  --midnight: #122C4F;
+  --ocean: #5B88B2;
+  --pearl: #FBF9E4;
+  
+  /* Semantic Colors */
+  --background: var(--noir);
+  --foreground: var(--pearl);
+  --accent-primary: var(--midnight);
+  --accent-secondary: var(--ocean);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(18, 44, 79, 0.15);
+  --glass-border: rgba(91, 136, 178, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--midnight) 0%, var(--ocean) 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(18, 44, 79, 0.3) 0%, rgba(91, 136, 178, 0.1) 100%);
+  --gradient-glow: radial-gradient(ellipse at center, rgba(91, 136, 178, 0.15) 0%, transparent 70%);
+  
+  /* Text Colors */
+  --text-primary: var(--pearl);
+  --text-secondary: rgba(251, 249, 228, 0.7);
+  --text-muted: rgba(251, 249, 228, 0.5);
+  
+  /* Borders */
+  --border-subtle: rgba(91, 136, 178, 0.15);
+  --border-medium: rgba(91, 136, 178, 0.3);
+  
+  /* Spacing */
+  --nav-height: 4rem;
+}
+
+/* ============================================
+   TAILWIND THEME CONFIGURATION
+   ============================================ */
+
+@theme inline {
+  --color-noir: #000000;
+  --color-midnight: #122C4F;
+  --color-ocean: #5B88B2;
+  --color-pearl: #FBF9E4;
+  
+  --color-background: var(--noir);
+  --color-foreground: var(--pearl);
+  
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Monaspace Neon', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  --font-display: 'Monaspace Krypton', 'Monaspace Neon', monospace;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--noir);
+  color: var(--pearl);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+code, pre, .font-mono {
+  font-family: 'Monaspace Neon', monospace;
+}
+
+.font-display {
+  font-family: 'Monaspace Krypton', monospace;
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITIES
+   ============================================ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Modern Navbar Glassmorphism with Grain */
+.navbar-glass {
+  position: relative;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(91, 136, 178, 0.1);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  isolation: isolate;
+  transition: background 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced glassmorphism when scrolled */
+.navbar-glass-scrolled {
+  background: linear-gradient(
+    135deg,
+    rgba(18, 44, 79, 0.4) 0%,
+    rgba(0, 0, 0, 0.8) 50%,
+    rgba(18, 44, 79, 0.35) 100%
+  );
+  border-color: rgba(91, 136, 178, 0.2);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(91, 136, 178, 0.08) inset;
+}
+
+/* Subtle grainy noise texture overlay for navbar */
+.navbar-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure navbar content is above grain */
+.navbar-glass > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile Menu Glassmorphism */
+.mobile-menu-glass {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(18, 44, 79, 0.6) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(91, 136, 178, 0.2);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(18, 44, 79, 0.2) 0%,
+    rgba(91, 136, 178, 0.1) 50%,
+    rgba(18, 44, 79, 0.15) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 24px -1px var(--glass-shadow),
+    inset 0 1px 0 rgba(251, 249, 228, 0.05);
+}
+
+.glass-card:hover {
+  border-color: rgba(91, 136, 178, 0.4);
+  box-shadow: 
+    0 8px 32px -4px var(--glass-shadow),
+    inset 0 1px 0 rgba(251, 249, 228, 0.08);
+}
+
+.glass-button {
+  background: linear-gradient(135deg, var(--midnight) 0%, rgba(91, 136, 178, 0.8) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: linear-gradient(135deg, rgba(18, 44, 79, 0.9) 0%, var(--ocean) 100%);
+  border-color: var(--ocean);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(91, 136, 178, 0.3);
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+
+.glow-ocean {
+  box-shadow: 0 0 20px rgba(91, 136, 178, 0.3),
+              0 0 40px rgba(91, 136, 178, 0.1);
+}
+
+.glow-midnight {
+  box-shadow: 0 0 20px rgba(18, 44, 79, 0.5),
+              0 0 40px rgba(18, 44, 79, 0.2);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(91, 136, 178, 0.5),
+               0 0 40px rgba(91, 136, 178, 0.2);
+}
+
+/* ============================================
+   GRADIENTS
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--pearl) 0%, var(--ocean) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-ocean {
+  background: linear-gradient(135deg, var(--midnight) 0%, var(--ocean) 100%);
+}
+
+/* ============================================
+   BACKGROUND EFFECTS
+   ============================================ */
+
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(91, 136, 178, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 136, 178, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--noir);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--midnight);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ocean);
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+
+::selection {
+  background: var(--ocean);
+  color: var(--noir);
+}
+
+/* ============================================
+   FOCUS STATES
+   ============================================ */
+
+:focus-visible {
+  outline: 2px solid var(--ocean);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(91, 136, 178, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(91, 136, 178, 0.5);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-scroll {
+  animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+.animate-spotlight {
+  animation: spotlight 2s ease 0.75s 1 forwards;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding: 0 2rem;
+  }
+}
+
+/* ============================================
+   PAGE TRANSITIONS
+   ============================================ */
+
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
