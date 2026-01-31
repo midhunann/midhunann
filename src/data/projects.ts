@@ -71,6 +71,7 @@ Built on previous hackathon rounds, this application refactors and integrates th
       },
     ],
     images: {
+      logo: '/assets/images/projects/synapse-docs/synapse-docs-logo.png',
       thumbnail: '/assets/images/projects/synapse-docs/thumbnail.png',
       screenshots: [
         '/assets/images/projects/synapse-docs/screenshot-1.png',
@@ -142,6 +143,7 @@ With 1,400+ active users on the VS Code Marketplace, Haskell Run has become an e
       },
     ],
     images: {
+      logo: '/assets/images/projects/haskell-run/haskell-run-logo.png',
       thumbnail: '/assets/images/projects/haskell-run/thumbnail.png',
       screenshots: [
         '/assets/images/projects/haskell-run/screenshot-1.png',
@@ -220,6 +222,7 @@ With 450+ active users and glowing reviews, AttendEase has become an essential t
       },
     ],
     images: {
+      logo: '/assets/images/projects/attendease/attend-ease-128.png',
       thumbnail: '/assets/images/projects/attendease/thumbnail.png',
       screenshots: [
         '/assets/images/projects/attendease/screenshot-1.png',

@@ -34,11 +34,26 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       <CardContainer className="w-full h-full">
         <CardBody className="relative w-full h-full">
           <Link href={`/projects/${project.slug}`} className="block h-full">
-            <div className="glass-card overflow-hidden w-full h-full min-h-[640px] flex flex-col hover:border-ocean/40 transition-all duration-500">
-                {/* Thumbnail */}
+            <div 
+              className="glass-card overflow-hidden w-full h-full min-h-[600px] flex flex-col hover:border-ocean/40 transition-all duration-500"
+              data-cursor-preview
+              data-preview-type="image"
+              data-preview-content={project.images.thumbnail}
+              data-preview-label={project.role === 'solo' ? 'Solo Project' : 'Team Project'}
+            >
+                {/* Logo/Thumbnail */}
                 <CardItem translateZ="50" className="w-full shrink-0">
-                  <div className="relative aspect-video overflow-hidden bg-midnight/30">
-                    {project.images.thumbnail ? (
+                  <div className="relative aspect-video overflow-hidden bg-midnight/30 flex items-center justify-center">
+                    {project.images.logo ? (
+                      <div className="relative w-full h-full flex items-center justify-center p-12">
+                        <Image
+                          src={project.images.logo}
+                          alt={project.title}
+                          fill
+                          className="object-contain transition-transform duration-700"
+                        />
+                      </div>
+                    ) : project.images.thumbnail ? (
                       <Image
                         src={project.images.thumbnail}
                         alt={project.title}
@@ -46,43 +61,29 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                         className="object-cover transition-transform duration-700"
                       />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-ocean/40 font-mono text-sm">
-                          {project.title}
-                        </div>
+                      <div className="text-ocean/40 font-mono text-sm">
+                        {project.title}
                       </div>
                     )}
                     <div className="absolute inset-0 bg-linear-to-t from-noir/80 via-noir/20 to-transparent" />
-                    
-                    {/* Role Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className={cn(
-                        'px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm',
-                        project.role === 'solo'
-                          ? 'bg-ocean/20 text-ocean border border-ocean/30'
-                          : 'bg-midnight/50 text-pearl/80 border border-midnight/50'
-                      )}>
-                        {project.role === 'solo' ? 'Solo Project' : 'Team Project'}
-                      </span>
-                    </div>
                   </div>
                 </CardItem>
 
                 {/* Content */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   {/* Title and Description */}
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     <CardItem translateZ="60" className="w-full">
                       <h3 className="text-xl font-semibold text-pearl group-hover:text-ocean transition-colors leading-tight">
                         {project.title}
                       </h3>
-                      <p className="text-pearl/60 text-sm mt-2 leading-relaxed">
+                      <p className="text-pearl/60 text-sm mt-1.5 leading-relaxed line-clamp-3">
                         {project.tagline}
                       </p>
                     </CardItem>
 
                     {/* Tech Stack Preview */}
-                    <CardItem translateZ="40" className="w-full">
+                    <CardItem translateZ="40" className="w-full mt-2">
                       <div className="flex flex-wrap gap-2">
                         {project.techStack.slice(0, 4).map((tech) => (
                           <span
@@ -102,10 +103,10 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                   </div>
 
                   {/* Bottom Section */}
-                  <div className="space-y-3 mt-4">
+                  <div className="space-y-2 mt-3">
                     {/* Metrics */}
                     <CardItem translateZ="30" className="w-full">
-                      <div className="flex items-center gap-4 py-3 border-t border-ocean/10">
+                      <div className="flex items-center gap-4 py-2.5 border-t border-ocean/10">
                         {project.metrics.slice(0, 2).map((metric) => (
                           <div key={metric.label} className="flex flex-col">
                             <span className="text-ocean font-semibold text-sm">{metric.value}</span>

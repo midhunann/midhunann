@@ -77,6 +77,7 @@ export interface Project {
   techStack: TechStack[];
   links: ProjectLink[];
   images: {
+    logo?: string;
     thumbnail: string;
     screenshots: string[];
     achievement?: string;
@@ -151,6 +152,7 @@ export interface BlogPost {
 export interface NavigationItem {
   label: string;
   href: string;
+  icon?: string;
   external?: boolean;
 }
 
