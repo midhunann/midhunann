@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components/layout";
+import { InteractiveModeProvider } from "@/contexts/InteractiveModeContext";
+import { CursorPreview, InteractiveModeToggle, CursorGlow } from "@/components/ui";
 import { personalInfo } from "@/data";
 
 const inter = Inter({
@@ -71,12 +73,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased bg-noir min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="grow pt-(--nav-height)">
-          {children}
-        </main>
-        <Footer />
+      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
+        <InteractiveModeProvider>
+          <Navbar />
+          <main className="grow relative">
+            {children}
+          </main>
+          <Footer />
+          <CursorPreview />
+          <CursorGlow />
+        </InteractiveModeProvider>
       </body>
     </html>
   );

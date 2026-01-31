@@ -16,6 +16,7 @@ import {
   ProjectCard,
   AchievementCard,
   BackgroundBeams,
+  BackgroundRippleEffect,
   TextHoverEffect,
   InfiniteMovingCards,
   HoverBorderGradient,
@@ -88,18 +89,20 @@ export default function HomePage() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Background Effects - Replace with Background Beams */}
-      <BackgroundBeams className="opacity-50" />
-      <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="var(--ocean)" />
-
+      {/* Background Ripple Effect - Full Page */}
+      <div className="fixed inset-0 z-0">
+        <BackgroundRippleEffect rows={20} cols={40} cellSize={56} />
+      </div>
+      
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center py-20 z-10">
+        <Spotlight className="-top-40 left-0 md:left-60 md:-top-20" fill="var(--ocean)" />
         <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-6 max-w-3xl mx-auto"
+            className="space-y-6 max-w-5xl mx-auto"
           >
             {/* Greeting */}
             <motion.div
@@ -120,10 +123,17 @@ export default function HomePage() {
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-pearl leading-tight"
             >
               Hey, I&apos;m{' '}
-              <TextHoverEffect 
-                text={personalInfo.name.display}
-                className="inline-block"
-              />
+              <span
+                data-cursor-preview
+                data-preview-type="image"
+                data-preview-content="/assets/images/profile/speaking.png"
+                data-preview-label="Full Stack Developer"
+              >
+                <TextHoverEffect 
+                  text={personalInfo.name.display}
+                  className="inline-block"
+                />
+              </span>
               <br />
               <span className="text-pearl/80 text-3xl md:text-5xl lg:text-6xl font-medium">
                 {personalInfo.title}
@@ -145,6 +155,7 @@ export default function HomePage() {
             >
               {heroCTAs.map((cta, idx) => {
                 const Icon = iconMap[cta.icon || ''];
+                const previewIcons = ['💼', '📧', '📝', '📄'];
                 
                 if (idx === 0) {
                   // Primary button with HoverBorderGradient
@@ -153,6 +164,10 @@ export default function HomePage() {
                       key={cta.label}
                       as="div"
                       className="!bg-midnight hover:!bg-midnight/80"
+                      data-cursor-preview
+                      data-preview-type="icon"
+                      data-preview-content={previewIcons[idx] || '🚀'}
+                      data-preview-label={cta.label}
                     >
                       {cta.external ? (
                         <a 
@@ -242,7 +257,7 @@ export default function HomePage() {
         centered
         className="bg-linear-to-b from-transparent via-midnight/5 to-transparent"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -250,7 +265,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-full w-full max-w-md mx-auto"
+              className="h-full"
             >
               <ProjectCard project={project} />
             </motion.div>
@@ -277,14 +292,23 @@ export default function HomePage() {
         title="Achievements & Awards"
         subtitle="Recognition and milestones from my journey so far"
         centered
+        className="bg-linear-to-b from-transparent via-midnight/5 to-transparent"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr items-stretch max-w-4xl mx-auto">
           {achievements.map((achievement, index) => (
-            <AchievementCard
+            <motion.div
               key={achievement.id}
-              achievement={achievement}
-              index={index}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="h-full"
+            >
+              <AchievementCard
+                achievement={achievement}
+                index={index}
+              />
+            </motion.div>
           ))}
         </div>
       </Section>
