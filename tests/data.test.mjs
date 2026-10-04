@@ -7,9 +7,10 @@ import { profile } from '../src/data/profile.ts';
 import { experience } from '../src/data/experience.ts';
 import { projects } from '../src/data/projects.ts';
 import { awards, leadership, education } from '../src/data/recognition.ts';
+import { webring } from '../src/data/webring.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const everything = { profile, experience, projects, awards, leadership, education };
+const everything = { profile, experience, projects, awards, leadership, education, webring };
 
 function collect(value, out = []) {
   if (typeof value === 'string') out.push(value);
@@ -91,6 +92,18 @@ test('structure: four projects, three roles, five awards, two leadership, two ed
 
 test('every award links to its proof', () => {
   for (const a of awards) assert.match(a.href, /^https:\/\//, a.id);
+});
+
+test('webring: the four links follow amrita.town\'s documented shape', () => {
+  assert.equal(webring.name, 'amrita.town');
+  assert.equal(webring.home, 'https://amrita.town');
+  assert.equal(webring.prev, 'https://amrita.town/prev');
+  assert.equal(webring.random, 'https://amrita.town/random');
+  assert.equal(webring.next, 'https://amrita.town/next');
+});
+
+test('webring: on by default now the site is a member; NEXT_PUBLIC_WEBRING=false switches it off', () => {
+  assert.equal(webring.enabled, process.env.NEXT_PUBLIC_WEBRING !== 'false');
 });
 
 test('the downloadable resume is the new pdf', () => {

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, join } from 'node:path';
+import { webring } from '../src/data/webring.ts';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const htmlPath = join(root, '.next/server/app/index.html');
@@ -30,6 +31,13 @@ test('the page declares the "m" favicon: svg icon, ico fallback and apple touch 
   assert.match(html, /<link rel="icon" href="\/icon\.svg[^"]*"[^>]*type="image\/svg\+xml"/);
   assert.match(html, /<link rel="icon" href="\/favicon\.ico[^"]*"/);
   assert.match(html, /<link rel="apple-touch-icon" href="\/apple-icon\.png[^"]*"/);
+});
+
+// Run `npm run build` and `npm test` with the same NEXT_PUBLIC_WEBRING value.
+test('webring links are in the footer only when the ring is enabled', { skip }, () => {
+  for (const url of [webring.home, webring.prev, webring.random, webring.next]) {
+    assert.equal(html.includes(`href="${url}"`), webring.enabled, `${url} (enabled=${webring.enabled})`);
+  }
 });
 
 test('the primary action and the key content are in the static HTML (no JS needed)', { skip }, () => {
