@@ -18,6 +18,7 @@ export const profile: Profile = {
     linkedin: 'https://www.linkedin.com/in/midhunanv',
     github: 'https://github.com/midhunann',
     instagram: 'https://www.instagram.com/midhunannn',
+    x: 'https://x.com/midhunann',
   },
   portrait: {
     src: '/assets/images/profile/profile-photo.png',

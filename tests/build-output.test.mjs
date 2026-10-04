@@ -33,6 +33,11 @@ test('the page declares the "m" favicon: svg icon, ico fallback and apple touch 
   assert.match(html, /<link rel="apple-touch-icon" href="\/apple-icon\.png[^"]*"/);
 });
 
+test('the x profile is linked from both the intro and the contact section', { skip }, () => {
+  const count = html.split('href="https://x.com/midhunann"').length - 1;
+  assert.ok(count >= 2, `expected the x link in the intro and in contact, found ${count}`);
+});
+
 // Run `npm run build` and `npm test` with the same NEXT_PUBLIC_WEBRING value.
 test('webring links are in the footer only when the ring is enabled', { skip }, () => {
   for (const url of [webring.home, webring.prev, webring.random, webring.next]) {

@@ -8,7 +8,7 @@ const step = (i: number) => ({ '--i': i }) as React.CSSProperties;
 export default function Intro() {
   return (
     <section id="top" aria-label="introduction" className="mx-auto max-w-[60rem] px-6 pb-20 pt-10 md:pb-28 md:pt-16">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-8">
+      <div className="grid items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-6">
         <div className="md:order-first">
           <h1 className="intro-in" style={step(1)}>
             <NameHover
@@ -24,7 +24,7 @@ export default function Intro() {
           <p className="intro-in mt-4 max-w-[36rem]" style={step(3)}>
             {profile.proof}
           </p>
-          <div className="intro-in mt-8 flex flex-wrap items-center gap-x-4 gap-y-1" style={step(4)}>
+          <div className="intro-in mt-8 flex flex-wrap items-center gap-x-3 gap-y-1" style={step(4)}>
             <a className="btn-primary" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
               connect on linkedin
             </a>
@@ -37,6 +37,9 @@ export default function Intro() {
             </a>
             <a className="link tap" href={profile.links.instagram} target="_blank" rel="noopener noreferrer">
               instagram
+            </a>
+            <a className="link tap" href={profile.links.x} target="_blank" rel="noopener noreferrer">
+              x
             </a>
           </div>
         </div>

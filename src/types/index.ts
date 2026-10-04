@@ -11,7 +11,7 @@ export interface Profile {
   proof: string;
   email: string;
   resume: string;
-  links: { linkedin: string; github: string; instagram: string };
+  links: { linkedin: string; github: string; instagram: string; x: string };
   portrait: { src: string; alt: string; width: number; height: number };
   stage: Preview;
 }

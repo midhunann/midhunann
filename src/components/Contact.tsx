@@ -26,6 +26,10 @@ export default function Contact() {
         <a className="link" href={profile.links.instagram} target="_blank" rel="noopener noreferrer">
           instagram
         </a>
+        ,{' '}
+        <a className="link" href={profile.links.x} target="_blank" rel="noopener noreferrer">
+          x
+        </a>
         , and the{' '}
         <a className="link" href={profile.resume} target="_blank" rel="noopener noreferrer">
           resume

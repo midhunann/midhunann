@@ -45,6 +45,7 @@ test('every external link is a well-formed https URL', () => {
 
 test('linkedin is the confirmed profile url', () => {
   assert.equal(profile.links.linkedin, 'https://www.linkedin.com/in/midhunanv');
+  assert.equal(profile.links.x, 'https://x.com/midhunann');
   assert.equal(profile.email, 'midhunmidhunan@gmail.com');
 });
 
