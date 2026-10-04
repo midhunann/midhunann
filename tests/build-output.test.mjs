@@ -26,6 +26,12 @@ test('the page has one h1, a title, a description and an og image', { skip }, ()
   assert.match(html, /property="og:image"/);
 });
 
+test('the page declares the "m" favicon: svg icon, ico fallback and apple touch icon', { skip }, () => {
+  assert.match(html, /<link rel="icon" href="\/icon\.svg[^"]*"[^>]*type="image\/svg\+xml"/);
+  assert.match(html, /<link rel="icon" href="\/favicon\.ico[^"]*"/);
+  assert.match(html, /<link rel="apple-touch-icon" href="\/apple-icon\.png[^"]*"/);
+});
+
 test('the primary action and the key content are in the static HTML (no JS needed)', { skip }, () => {
   assert.ok(html.includes('connect on linkedin'));
   assert.ok(html.includes('https://www.linkedin.com/in/midhunanv'));
