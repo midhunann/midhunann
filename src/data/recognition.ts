@@ -9,7 +9,7 @@ export const awards: Award[] = [
     href: 'https://www.linkedin.com/posts/midhunan-vijendra-prabhaharan_announcing-the-winners-of-the-adobe-india-activity-7371195492870979585-Odlz',
     preview: {
       src: '/assets/images/achievements/adobe-hackathon-runner-up.jpeg',
-      label: 'adobe india hackathon',
+      label: 'runner-up at the adobe india hackathon finale',
     },
   },
   {
@@ -18,6 +18,10 @@ export const awards: Award[] = [
     detail: 'out of 131,868 registrations. routex',
     year: '2025',
     href: 'https://github.com/CosmicEngineers/RouteX',
+    preview: {
+      src: '/assets/images/achievements/hp-power-lab-pitch.jpeg',
+      label: 'pitching routex at hp power lab 2.0',
+    },
   },
   {
     id: 'hack-beyond-limits',
@@ -27,7 +31,7 @@ export const awards: Award[] = [
     href: 'https://github.com/tokenomists/AgriChain',
     preview: {
       src: '/assets/images/achievements/hack-beyond-limits.jpeg',
-      label: 'hack beyond limits',
+      label: 'receiving the prize at hack beyond limits',
     },
   },
   {
@@ -38,7 +42,7 @@ export const awards: Award[] = [
     href: 'https://www.linkedin.com/posts/midhunan-vijendra-prabhaharan_we-manc-proudly-secured-3rd-place-in-the-activity-7291080294781083648-2O6e',
     preview: {
       src: '/assets/images/achievements/value-health-hackathon.jpeg',
-      label: 'value health hackathon',
+      label: '3rd place at the value health hackathon',
     },
   },
   {
@@ -47,6 +51,10 @@ export const awards: Award[] = [
     detail: 'recognized by unstop',
     year: '2026',
     href: 'https://www.linkedin.com/posts/midhunan-vijendra-prabhaharan_honored-to-be-recognized-among-the-top-80-activity-7439696329385279488-RovY',
+    preview: {
+      src: '/assets/images/achievements/unstop-top-80.jpeg',
+      label: 'receiving the award from ankit aggarwal',
+    },
   },
 ];
 
@@ -60,7 +68,7 @@ export const leadership: Role[] = [
       'led planning and execution of chapter events across teams and volunteers: timelines, responsibilities, logistics and on-ground operations.',
       "also on the technical team (mar 2025 – apr 2026): helped design and build the chapter's public website.",
     ],
-    preview: { src: '/assets/images/achievements/acm-team.JPG', label: 'acm student chapter' },
+    preview: { src: '/assets/images/achievements/acm-team.JPG', label: 'with the acm student chapter team' },
   },
   {
     id: 'anokha',

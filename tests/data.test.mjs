@@ -90,6 +90,29 @@ test('structure: four projects, three roles, five awards, two leadership, two ed
   }
 });
 
+test('every award and every job has a hover image', () => {
+  for (const a of awards) assert.ok(a.preview, `award ${a.id} has no preview`);
+  for (const e of experience) assert.ok(e.preview, `experience ${e.id} has no preview`);
+  assert.ok(leadership.find((l) => l.id === 'acm')?.preview, 'acm has no preview');
+  assert.ok(profile.stage?.src, 'the name has no stage photo');
+});
+
+test('hover captions are short, lowercase, plain phrases', () => {
+  const previews = [
+    profile.stage,
+    ...awards.map((a) => a.preview),
+    ...[...experience, ...leadership].map((r) => r.preview),
+  ].filter(Boolean);
+  assert.ok(previews.length >= 9, `expected at least 9 previews, got ${previews.length}`);
+  for (const p of previews) {
+    const words = p.label.trim().split(/\s+/).length;
+    assert.ok(words >= 3 && words <= 9, `caption word count (${words}): "${p.label}"`);
+    assert.equal(p.label, p.label.toLowerCase(), `caption must be lowercase: "${p.label}"`);
+    assert.ok(!/[.!?]$/.test(p.label), `caption must not end with punctuation: "${p.label}"`);
+  }
+  assert.equal(new Set(previews.map((p) => p.src)).size, previews.length, 'two previews share one image');
+});
+
 test('every award links to its proof', () => {
   for (const a of awards) assert.match(a.href, /^https:\/\//, a.id);
 });
