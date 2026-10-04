@@ -1,88 +1,68 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Navbar, Footer } from "@/components/layout";
-import { InteractiveModeProvider } from "@/contexts/InteractiveModeContext";
-import { CursorPreview, InteractiveModeToggle, CursorGlow } from "@/components/ui";
-import { personalInfo } from "@/data";
+import type { Metadata, Viewport } from 'next';
+import { Inter, Instrument_Serif } from 'next/font/google';
+import localFont from 'next/font/local';
+import './globals.css';
+import CursorPreview from '@/components/CursorPreview';
+import Nav from '@/components/Nav';
+import { profile } from '@/data';
+import { siteUrl } from '@/lib/site';
+import { themeScript } from '@/lib/theme-script';
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const inter = Inter({ variable: '--font-inter', subsets: ['latin'], display: 'swap' });
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-serif-display',
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+});
+const monaspaceNeon = localFont({
+  src: './fonts/MonaspaceNeonDates.woff2',
+  variable: '--font-mono-label',
+  weight: '400',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://midhunan.dev'),
-  title: {
-    default: `${personalInfo.name.display} | ${personalInfo.title}`,
-    template: `%s | ${personalInfo.name.display}`,
-  },
-  description: personalInfo.description,
-  keywords: [
-    "Midhunan",
-    "Portfolio",
-    "Full Stack Developer",
-    "CSE Student",
-    "Web Developer",
-    "React",
-    "Next.js",
-    "Adobe Hackathon",
-    "VS Code Extension",
-  ],
-  authors: [{ name: personalInfo.name.full }],
-  creator: personalInfo.name.display,
+  metadataBase: new URL(siteUrl),
+  title: profile.title,
+  description: profile.description,
+  authors: [{ name: profile.name.full }],
+  alternates: { canonical: '/' },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://midhunan.dev",
-    siteName: personalInfo.name.display,
-    title: `${personalInfo.name.display} | ${personalInfo.title}`,
-    description: personalInfo.description,
-    images: [
-      {
-        url: "/assets/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: personalInfo.name.display,
-      },
-    ],
+    type: 'website',
+    url: '/',
+    siteName: profile.name.full,
+    title: profile.title,
+    description: profile.description,
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${personalInfo.name.display} | ${personalInfo.title}`,
-    description: personalInfo.description,
-    images: ["/assets/images/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  twitter: { card: 'summary_large_image', title: profile.title, description: profile.description },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbf9e4' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} antialiased min-h-screen flex flex-col`}>
-        <InteractiveModeProvider>
-          <Navbar />
-          <main className="grow relative">
-            {children}
-          </main>
-          <Footer />
-          <CursorPreview />
-          <CursorGlow />
-        </InteractiveModeProvider>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${instrumentSerif.variable} ${monaspaceNeon.variable}`}
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body>
+        <a href="#main" className="skip-link">
+          skip to content
+        </a>
+        <Nav />
+        <main id="main">{children}</main>
+        <CursorPreview />
       </body>
     </html>
   );

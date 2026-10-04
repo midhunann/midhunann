@@ -1,8 +1,4 @@
-// ============================================
-// DATA EXPORTS - Central entry point
-// ============================================
-
-export * from './personal';
-export * from './projects';
-export * from './achievements';
-export * from './blog';
+export { profile } from './profile';
+export { experience } from './experience';
+export { projects } from './projects';
+export { awards, leadership, education } from './recognition';
