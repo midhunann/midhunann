@@ -27,7 +27,7 @@ Rebuild midhunan.vercel.app as one short, calm, editorial page that gets an engi
 | Type | Serif display, Inter body, Monaspace Neon for dates only |
 | Motion | One orchestrated page-load sequence in the intro; no per-section scroll reveals; hover/focus transitions only; honours `prefers-reduced-motion` |
 | Voice | Casual lowercase, like his LinkedIn About |
-| Photo | `profile-photo.png` (supplied, 1145×1373 transparent PNG, navy shirt) cropped head-and-shoulders in the intro; stage photo kept for the name-hover preview |
+| Photo | `profile-photo.png` (supplied, 1145×1373 transparent PNG, navy shirt) cropped tight on the face in a 192 px (mobile) / 304 px (desktop) rounded square (30% radius, vertically centered against the intro text), with a hard, unblurred brand-blue drop-shadow of the cut-out itself, offset up and to the right (the one shadow on the page, added at the owner's request on 2026-10-04); stage photo kept for the name-hover preview |
 | Effects kept | Cursor image preview (awards, a bonus on top of proof links), animated name hover |
 | Extras | Sticky minimal nav, copy-email button, generated Open Graph image, resume PDF download |
 | Not included | Blog, contact form, phone number, location, CGPA, skills list, coursework, user reviews, stats strip, availability line |

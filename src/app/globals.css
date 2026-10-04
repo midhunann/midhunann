@@ -150,6 +150,16 @@
     color: var(--bg);
   }
 
+  /* A hard, unblurred shadow of the cut-out person, in the brand blue. */
+  .cutout-shadow {
+    filter: drop-shadow(4px 2px 0 var(--accent));
+  }
+  @media (min-width: 48rem) {
+    .cutout-shadow {
+      filter: drop-shadow(7px 4px 0 var(--accent));
+    }
+  }
+
   .intro-in {
     animation: rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-delay: calc(var(--i, 0) * 70ms);

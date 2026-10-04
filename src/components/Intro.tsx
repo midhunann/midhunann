@@ -8,7 +8,7 @@ const step = (i: number) => ({ '--i': i }) as React.CSSProperties;
 export default function Intro() {
   return (
     <section id="top" aria-label="introduction" className="mx-auto max-w-[60rem] px-6 pb-20 pt-10 md:pb-28 md:pt-16">
-      <div className="grid items-end gap-10 md:grid-cols-[1fr_15rem]">
+      <div className="grid items-center gap-10 md:grid-cols-[1fr_19rem] md:gap-8">
         <div className="md:order-first">
           <h1 className="intro-in" style={step(1)}>
             <NameHover
@@ -24,8 +24,8 @@ export default function Intro() {
           <p className="intro-in mt-4 max-w-[36rem]" style={step(3)}>
             {profile.proof}
           </p>
-          <div className="intro-in mt-8 flex flex-wrap items-center gap-x-6 gap-y-1" style={step(4)}>
-            <a className="btn-primary mr-2" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
+          <div className="intro-in mt-8 flex flex-wrap items-center gap-x-4 gap-y-1" style={step(4)}>
+            <a className="btn-primary" href={profile.links.linkedin} target="_blank" rel="noopener noreferrer">
               connect on linkedin
             </a>
             <CopyEmail email={profile.email} />
@@ -41,15 +41,15 @@ export default function Intro() {
           </div>
         </div>
         <div className="intro-in order-first md:order-none" style={step(0)}>
-          <div className="relative mx-auto size-40 overflow-hidden rounded-full bg-surface md:size-60">
+          <div className="relative mx-auto aspect-[4/5] w-48 overflow-hidden rounded-[15%/15%] bg-surface md:w-[19rem]">
             <Image
               src={profile.portrait.src}
               alt={profile.portrait.alt}
               width={profile.portrait.width}
               height={profile.portrait.height}
               priority
-              sizes="(min-width: 768px) 264px, 176px"
-              className="absolute left-1/2 top-0 h-auto w-[110%] max-w-none -translate-x-1/2"
+              sizes="(min-width: 768px) 460px, 290px"
+              className="cutout-shadow absolute left-1/2 -top-[9%] h-auto w-[150%] max-w-none -translate-x-1/2"
             />
           </div>
         </div>
