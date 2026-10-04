@@ -25,5 +25,5 @@ export const profile: Profile = {
     width: 1145,
     height: 1373,
   },
-  stage: { src: '/assets/images/profile/speaking.jpg', label: 'speaking' },
+  stage: { src: '/assets/images/profile/speaking.jpg', label: 'presenting at adobe' },
 };
