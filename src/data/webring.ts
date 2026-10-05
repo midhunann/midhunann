@@ -8,11 +8,12 @@ export interface Webring {
 }
 
 /**
- * The site is a member of the amrita.town webring, so the footer links are on.
- * Set NEXT_PUBLIC_WEBRING=false (and redeploy) to hide them.
+ * amrita.town asks members not to add its links before they are accepted.
+ * Off until then. Once accepted, set NEXT_PUBLIC_WEBRING=true (e.g. in Vercel)
+ * and redeploy, or change the default below.
  */
 export const webring: Webring = {
-  enabled: process.env.NEXT_PUBLIC_WEBRING !== 'false',
+  enabled: process.env.NEXT_PUBLIC_WEBRING === 'true',
   name: 'amrita.town',
   home: 'https://amrita.town',
   prev: 'https://amrita.town/prev',

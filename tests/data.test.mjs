@@ -126,8 +126,8 @@ test('webring: the four links follow amrita.town\'s documented shape', () => {
   assert.equal(webring.next, 'https://amrita.town/next');
 });
 
-test('webring: on by default now the site is a member; NEXT_PUBLIC_WEBRING=false switches it off', () => {
-  assert.equal(webring.enabled, process.env.NEXT_PUBLIC_WEBRING !== 'false');
+test('webring: off by default (the ring asks members not to add links before acceptance); NEXT_PUBLIC_WEBRING=true switches it on', () => {
+  assert.equal(webring.enabled, process.env.NEXT_PUBLIC_WEBRING === 'true');
 });
 
 test('the downloadable resume is the new pdf', () => {
